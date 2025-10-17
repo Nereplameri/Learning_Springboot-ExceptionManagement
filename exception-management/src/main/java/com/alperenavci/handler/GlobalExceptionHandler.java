@@ -29,11 +29,10 @@ public class GlobalExceptionHandler {
 		Exception<E> exception = new Exception<>();
 		exception.setCreateTime(new Date());
 		exception.setHostName(getHostName());
-		exception.setPath(request.getDescription(false));
+		exception.setPath(request.getDescription(false).substring(4));
 		exception.setMessage(message);
 		
 		apiError.setException(exception);
-		
 		return apiError;
 	}
 	

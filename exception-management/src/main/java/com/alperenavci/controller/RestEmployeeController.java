@@ -1,7 +1,8 @@
 package com.alperenavci.controller;
 
 import com.alperenavci.dto.DtoEmployee;
+import com.alperenavci.model.RootEntity;
 
 public interface RestEmployeeController {
-	public DtoEmployee findEmployeeById(Long id);
+	public RootEntity<DtoEmployee> findEmployeeById(Long id);
 }

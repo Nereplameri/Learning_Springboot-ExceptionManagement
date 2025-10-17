@@ -8,19 +8,20 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.alperenavci.controller.RestEmployeeController;
 import com.alperenavci.dto.DtoEmployee;
+import com.alperenavci.model.RootEntity;
 import com.alperenavci.service.IEmployeeService;
 
 @RestController
 @RequestMapping("/rest/api/employee")
-public class EmployeeControllerImpl implements RestEmployeeController{
+public class EmployeeControllerImpl extends RestBaseController implements RestEmployeeController{
 
 	@Autowired
 	IEmployeeService employeeService;
 	
 	@GetMapping("/list/{id}")
 	@Override
-	public DtoEmployee findEmployeeById(@PathVariable(name = "id") Long id) {
-		return employeeService.findEmployeeById(id);
+	public RootEntity<DtoEmployee> findEmployeeById(@PathVariable(name = "id") Long id) {
+		return ok(employeeService.findEmployeeById(id));
 	}
 	
 	
