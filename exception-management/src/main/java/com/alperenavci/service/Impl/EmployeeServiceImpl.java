@@ -8,6 +8,9 @@ import org.springframework.stereotype.Service;
 
 import com.alperenavci.dto.DtoDepartment;
 import com.alperenavci.dto.DtoEmployee;
+import com.alperenavci.exception.BaseException;
+import com.alperenavci.exception.ErrorMessage;
+import com.alperenavci.exception.MessageType;
 import com.alperenavci.model.Department;
 import com.alperenavci.model.Employee;
 import com.alperenavci.repository.EmployeeRepository;
@@ -27,7 +30,8 @@ public class EmployeeServiceImpl implements IEmployeeService{
 		Optional<Employee> optional = employeeRepository.findById(id);
 		
 		if (optional.isEmpty()) {
-			return null;
+			// return null;
+			throw new BaseException(new ErrorMessage(MessageType.NO_RECORD_EXIST, id.toString()));
 		}
 		
 		Employee employee = optional.get();
