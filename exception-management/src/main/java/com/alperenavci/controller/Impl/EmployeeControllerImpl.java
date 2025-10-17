@@ -23,7 +23,4 @@ public class EmployeeControllerImpl extends RestBaseController implements RestEm
 	public RootEntity<DtoEmployee> findEmployeeById(@PathVariable(name = "id") Long id) {
 		return ok(employeeService.findEmployeeById(id));
 	}
-	
-	
-
 }
